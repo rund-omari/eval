@@ -27,7 +27,7 @@ if not os.path.exists(DATA_FILE):
 st.title("📊 نظام تقييم مشاريع شركة SDK")
 
 # شعار الشركة (يمكنك تعديل الرابط لو عندك صورة خاصة)
-st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/SDK_Logo.svg/1200px-SDK_Logo.svg.png", width=150)
+st.image("https://github.com/rund-omari/eval/blob/main/WhatsApp%20Image%202023-11-18%20at%2014.17.19_93d55212.jpg", width=150)
 st.header("شركة SDK للتدريب")
 
 # المعايير المشتركة (من جميع المقيمين)
