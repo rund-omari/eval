@@ -27,7 +27,7 @@ if not os.path.exists(DATA_FILE):
 st.title("📊 نظام تقييم مشاريع شركة SDK")
 
 # شعار الشركة (يمكنك تعديل الرابط لو عندك صورة خاصة)
-st.image("https://github.com/rund-omari/eval/blob/main/WhatsApp%20Image%202023-11-18%20at%2014.17.19_93d55212.jpg", width=150)
+st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/SDK_Logo.svg/1200px-SDK_Logo.svg.png", width=150)
 st.header("شركة SDK للتدريب")
 
 # المعايير المشتركة (من جميع المقيمين)
@@ -148,14 +148,14 @@ if page == "إدخال تقييم":
     st.subheader("📍 التقييمات المشتركة (من جميع المقيمين)")
     scores = {}
     for key, (label, max_val) in common_criteria.items():
-        scores[key] = st.number_input(f"{label} (0-{max_val})", 0.0, float(max_val), step=1)
+        scores[key] = st.number_input(f"{label} (0-{max_val})", 0.0, float(max_val), step=0.5)
 
     # تقييمات المدربين
     if evaluator == "رند":
         if course in randa_courses:
             st.subheader("📍 تقييمات المدرب رند")
             for key, (label, max_val) in trainer_criteria[course].items():
-                scores[key] = st.number_input(f"{label} (0-{max_val})", 0.0, float(max_val), step=1)
+                scores[key] = st.number_input(f"{label} (0-{max_val})", 0.0, float(max_val), step=0.5)
         else:
             st.info("رند لا تقوم بتقييم هذا الكورس.")
             for key in trainer_criteria.get(course, {}).keys():
@@ -165,7 +165,7 @@ if page == "إدخال تقييم":
         if course in ["Dart", "Flutter.2", "Flutter.3"]:
             st.subheader("📍 تقييمات المدرب جود")
             for key, (label, max_val) in trainer_criteria[course].items():
-                scores[key] = st.number_input(f"{label} (0-{max_val})", 0.0, float(max_val), step=1)
+                scores[key] = st.number_input(f"{label} (0-{max_val})", 0.0, float(max_val), step=0.5)
         else:
             for key in trainer_criteria.get(course, {}).keys():
                 scores[key] = None
@@ -174,7 +174,7 @@ if page == "إدخال تقييم":
         if course in ["Front End", "React js", "Mern"]:
             st.subheader("📍 تقييمات المدرب محمد")
             for key, (label, max_val) in trainer_criteria[course].items():
-                scores[key] = st.number_input(f"{label} (0-{max_val})", 0.0, float(max_val), step=1)
+                scores[key] = st.number_input(f"{label} (0-{max_val})", 0.0, float(max_val), step=0.5)
         else:
             for key in trainer_criteria.get(course, {}).keys():
                 scores[key] = None
@@ -253,7 +253,7 @@ elif page == "عرض تقييمات":
                         max_sum += trainer_criteria[course_selected][key][1]
 
                 if max_sum > 0:
-                    trainer_score += (criteria_sum / max_sum) * 20  
+                    trainer_score += (criteria_sum / max_sum) * 20  # نوزعها على 20 نقطة
 
             # المجموع النهائي (peer 20 + trainer 20) = 40 كحد أقصى
             final_score = peer_avg + trainer_score
