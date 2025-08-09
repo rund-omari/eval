@@ -50,7 +50,14 @@ trainer_criteria = {
         "dl_analysis": ("Function rec", 15),
         "dl_code_org": ("Code Organization & Structure", 5),
 
-    }
+    },
+    "Data Engineer" :{
+        "dl_submit_on_time": ("Submit on Time", 10),
+        "dl_discussion_time": ("Discussion Time", 10),
+        "dl_accuracy": ("OOP", 30),
+     
+
+    },
 }
 
 # 🖊 إدخال بيانات أساسية
