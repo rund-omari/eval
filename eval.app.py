@@ -21,6 +21,16 @@ common_criteria = {
 
 # ---- معايير المدربين حسب الكورسات ----
 trainer_criteria = {
+    "Data Eng" :{"submit on time" :("Submit on Time", 10),
+"discussion time" : (discussion time,10),  
+"Data Description and Statistical Analysis" :('Data Description and Statistical Analysis' , 15)
+Handling Missing Values 5
+Visualization 5
+Exploratory Data Analysis (EDA) 5
+Relationship Identification 5
+Outliers and scaling 5
+Data Encoding (if required) 10
+streamlit 10}
     "Python": {
         "submit_on_time": ("Submit on Time", 10),
         "discussion_time": ("Discussion Time", 10),
@@ -40,10 +50,10 @@ trainer_criteria = {
     "Machine Learning": {
         "submit_on_time": ("Submit on Time", 10),
         "discussion_time": ("Discussion Time", 10),
-        "dl_accuracy": ("Accuracy & Implementation", 30),
-        "dl_analysis": ("Analysis & Explanation", 15),
-        "dl_code_org": ("Code Organization & Structure", 5),
-        "dl_deployment": ("Deployment the Model", 10)
+        "accuracy": ("Accuracy & Implementation", 30),
+        "analysis": ("Analysis & Explanation", 15),
+        "code_org": ("Code Organization & Structure", 5),
+        "deployment": ("Deployment the Model", 10)
     },
     "Dart": {
         "submit_on_time": ("Submit on Time", 10),
@@ -134,9 +144,10 @@ if page == "تقييم مشروع":
 
     # إدخال تقييمات المدرب حسب الكورس واسم المقيّم
     if evaluator == "رند":
-        st.subheader("تقييمات المدرب رند")
-        for key, (label, max_val) in trainer_criteria.get(course, {}).items():
-            scores[key] = st.number_input(f"{label} (0-{max_val})", 0.0, float(max_val), step=0.5)
+        if course in ["Python", "Deep Learning", "Machine Learning"]:
+            st.subheader("تقييمات المدرب رند")
+            for key, (label, max_val) in trainer_criteria.get(course, {}).items():
+                scores[key] = st.number_input(f"{label} (0-{max_val})", 0.0, float(max_val), step=0.5)
     elif evaluator == "جود":
         # جود لها معايير خاصة بالكورسات Dart, Flutter.2, Flutter.3
         if course in ["Dart", "Flutter.2", "Flutter.3"]:
