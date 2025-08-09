@@ -200,4 +200,12 @@ elif page == "عرض التقييمات":
             # أعمدة المعايير المشتركة
             common_cols = list(common_criteria.keys())
             # أعمدة معايير الكورس المختار فقط
-            course_cols =
+            course_cols = list(trainer_criteria[selected_course].keys())
+
+            # الأعمدة الأساسية للعرض
+            cols_to_show = ["Student", "Evaluator"] + common_cols + course_cols
+
+            # تصفية الأعمدة الموجودة فقط
+            cols_to_show = [col for col in cols_to_show if col in df_course.columns]
+
+            st.dataframe(df_course[cols_to_show].reset_index(drop=True))
